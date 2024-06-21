@@ -1,0 +1,78 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "rhel-openssl-1.0.x", "linux-musl-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default(autoincrement())
+
+  email    String @unique
+  password String
+
+  unsuccessfulLoginAttemptsCount Int      @default(0)
+  banStartTime                   DateTime @default("1989-12-31T21:00:00.000Z")
+
+  createdAt DateTime @default(now())
+  Board     Board[]
+
+  @@map("users")
+}
+
+model Board {
+  id Int @id @default(autoincrement())
+
+  title String
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  List      List[]
+
+  @@map("boards")
+}
+
+model List {
+  id Int @id @default(autoincrement())
+
+  title String
+
+  userId Int
+
+  boardId Int
+  board   Board @relation(fields: [boardId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Task      Task[]
+
+  @@map("lists")
+}
+
+model Task {
+  id Int @id @default(autoincrement())
+
+  title String
+
+  userId Int
+
+  listId Int
+  list   List @relation(fields: [listId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("tasks")
+}

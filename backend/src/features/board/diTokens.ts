@@ -1,0 +1,14 @@
+export const enum BoardRepositoryToken {
+  BOARD_REPOSITORY = "BOARD_REPOSITORY",
+}
+
+export const enum BoardCommandToken {
+  CREATE_BOARD_COMMAND = "CREATE_BOARD_COMMAND",
+  DELETE_BOARD_COMMAND = "DELETE_BOARD_COMMAND",
+  UPDATE_BOARD_COMMAND = "UPDATE_BOARD_COMMAND",
+}
+
+export const enum BoardQueryToken {
+  GET_BOARD_QUERY = "GET_BOARD_QUERY",
+  GET_BOARDS_QUERY = "GET_BOARDS_QUERY",
+}

@@ -1,0 +1,53 @@
+{
+  "name": "frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start:dev": "vite",
+    "start:preview": "vite preview",
+    "build": "tsc && vite build",
+    "lint:ts-check": "eslint .  --ext .ts --ext .tsx",
+    "lint:ts-fix": "eslint . --fix --ext .ts --ext .tsx",
+    "lint:format-check": "prettier --check './**/*.{ts,tsx,json}' --config ./.prettierrc.json",
+    "lint:format-fix": "prettier --write './**/*.{ts,tsx,json}' --config ./.prettierrc.json"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.12",
+    "@mui/material": "^5.15.12",
+    "axios": "^1.6.8",
+    "i18next": "^23.10.1",
+    "i18next-browser-languagedetector": "^7.2.0",
+    "mobx": "^6.12.0",
+    "mobx-react": "^9.1.1",
+    "react": "^18.2.0",
+    "react-beautiful-dnd": "^13.1.1",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.51.3",
+    "react-i18next": "^14.1.0",
+    "react-router-dom": "^6.22.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.18",
+    "@types/react": "^18.2.43",
+    "@types/react-beautiful-dnd": "^13.1.8",
+    "@types/react-dom": "^18.2.17",
+    "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "path": "^0.12.7",
+    "prettier": "^3.2.5",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  }
+}

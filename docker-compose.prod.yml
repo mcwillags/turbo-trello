@@ -1,0 +1,31 @@
+name: "trello-turbo"
+
+services:
+  db:
+    image: postgres:13.5
+    container_name: "trello-postgres"
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_USER=${POSTGRES_USER}
+    ports:
+      - "5432:5432"
+    volumes:
+      - database:/data/database
+
+  nestjs_prod:
+    container_name: "trello-nestjs"
+    depends_on:
+      - db
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+      args:
+        DATABASE_URL: ${DATABASE_URL}
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+
+
+volumes:
+  database:
